@@ -120,6 +120,13 @@ export type ShapesMenuProps = {
 
 export type Presence = any;
 
+export type CursorProps = {
+  color: string;
+  x: number;
+  y: string;
+  message: string;
+};
+
 export type LiveCursorProps = {
   others: readonly User<Presence, BaseUserMeta>[];
 };
