@@ -17,9 +17,11 @@ import useInterval from "@/hooks/use-interval";
 
 const REACTION_DURATION = 5000;
 
-type Props = {};
+type Props = {
+  canvasRef: React.MutableRefObject<HTMLCanvasElement | null>;
+};
 
-const Live = (props: Props) => {
+const Live = ({ canvasRef }: Props) => {
   const others = useOthers();
   const [{ cursor }, updateMyPresence] = useMyPresence() as any;
 
@@ -163,6 +165,7 @@ const Live = (props: Props) => {
 
   return (
     <div
+      id="canvas"
       onPointerMove={handlePointerMove}
       onPointerLeave={handlePointerLeave}
       onPointerDown={handlePointerDown}
@@ -172,7 +175,8 @@ const Live = (props: Props) => {
         "text-center"
       )}
     >
-      <h1 className={clsx("text-2xl text-white")}>Liveblocks Figma</h1>
+      {/* <h1 className={clsx("text-2xl text-white")}>Liveblocks Figma</h1> */}
+      <canvas ref={canvasRef} />
 
       {reaction.map((r) => (
         <FlyingReaction

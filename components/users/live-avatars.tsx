@@ -35,6 +35,12 @@ const avatarProps = {
   outlineColor: "white",
 };
 
+function containsColor(colors: [string, string][], color: [string, string]) {
+  return colors?.some(
+    ([color1, color2]) => color1 === color[0] || color2 === color[1]
+  );
+}
+
 export default function LiveAvatars() {
   //
   // RATIONALE:
@@ -50,6 +56,19 @@ export default function LiveAvatars() {
   const hasMoreUsers = others.length > MAX_OTHERS;
 
   const memoizedAvatars = React.useMemo(() => {
+    const selfGradient = generateGradient();
+    let othersGradient: [string, string][] | null = null;
+    othersGradient = others.slice(0, MAX_OTHERS).map(() => {
+      let gradient;
+      do {
+        gradient = generateGradient();
+      } while (
+        containsColor([selfGradient], gradient) ||
+        containsColor(othersGradient as [string, string][], gradient)
+      );
+      return gradient;
+    });
+
     return (
       <div
         style={{
@@ -73,7 +92,7 @@ export default function LiveAvatars() {
           {others
             .slice(0, MAX_OTHERS)
             .reverse()
-            .map(([key, info]) => (
+            .map(([key, info], _i) => (
               <motion.div key={key} {...animationProps}>
                 <Avatar
                   {...avatarProps}
@@ -81,7 +100,7 @@ export default function LiveAvatars() {
                     Math.random() * 3
                   )}.png`}
                   name={generateRandomName()}
-                  color={generateGradient()}
+                  color={othersGradient[_i]}
                 />
               </motion.div>
             ))}
@@ -94,7 +113,7 @@ export default function LiveAvatars() {
                   Math.random() * 3
                 )}.png`}
                 name={`${generateRandomName()} (you)`}
-                color={generateGradient()}
+                color={selfGradient}
               />
             </motion.div>
           ) : null}
