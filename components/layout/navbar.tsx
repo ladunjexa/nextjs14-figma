@@ -8,8 +8,9 @@ import { ActiveElement, NavbarProps } from "@/types/type";
 
 import { Button } from "../ui/button";
 // import ShapesMenu from "./ShapesMenu";
+import ShapesMenu from "../shapes-menu";
 import LiveAvatars from "../users/live-avatars";
-// import { NewThread } from "./comments/NewThread";
+import { NewThread } from "../comments/new-thread";
 
 const Navbar = ({
   activeElement,
@@ -26,7 +27,7 @@ const Navbar = ({
     <nav className="flex select-none items-center justify-between gap-4 bg-primary-black px-5 text-white">
       <Image src="/assets/logo.svg" alt="FigPro Logo" width={58} height={20} />
 
-      {/* <ul className="flex flex-row">
+      <ul className="flex flex-row">
         {navElements.map((item: ActiveElement | any) => (
           <li
             key={item.name}
@@ -42,7 +43,7 @@ const Navbar = ({
             }
             `}
           >
-            // !If value is an array means it's a nav element with sub options i.e., dropdown
+            {/* !If value is an array means it's a nav element with sub options i.e., dropdown */}
             {Array.isArray(item.value) ? (
               <ShapesMenu
                 item={item}
@@ -52,17 +53,19 @@ const Navbar = ({
                 handleImageUpload={handleImageUpload}
               />
             ) : item?.value === "comments" ? (
-              // !If value is comments, trigger the NewThread component
-              <NewThread>
-                <Button className="relative w-5 h-5 object-contain">
-                  <Image
-                    src={item.icon}
-                    alt={item.name}
-                    fill
-                    className={isActive(item.value) ? "invert" : ""}
-                  />
-                </Button>
-              </NewThread>
+              <>
+                {/* !If value is comments, trigger the NewThread component */}
+                <NewThread>
+                  <Button className="relative w-5 h-5 object-contain">
+                    <Image
+                      src={item.icon}
+                      alt={item.name}
+                      fill
+                      className={isActive(item.value) ? "invert" : ""}
+                    />
+                  </Button>
+                </NewThread>
+              </>
             ) : (
               <Button className="relative w-5 h-5 object-contain">
                 <Image
@@ -75,7 +78,7 @@ const Navbar = ({
             )}
           </li>
         ))}
-      </ul> */}
+      </ul>
 
       <LiveAvatars />
     </nav>
