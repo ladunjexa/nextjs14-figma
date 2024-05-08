@@ -20,6 +20,7 @@ import { useMutation, useRedo, useStorage, useUndo } from "@/liveblocks.config";
 import { LiveMap } from "@liveblocks/client";
 import { defaultNavElement } from "@/constants";
 import { handleDelete, handleKeyDown } from "@/lib/key-events";
+import { handleImageUpload } from "@/lib/shapes";
 
 export default function Home() {
   const undo = useUndo();
@@ -31,6 +32,7 @@ export default function Home() {
   const shapeRef = useRef<fabric.Object | null>(null);
   const selectedShapeRef = useRef<string | null>(null);
   const activeObjectRef = useRef<fabric.Object | null>(null);
+  const imageInputRef = useRef<HTMLInputElement | null>(null);
 
   const canvasObjects = useStorage((root) => root.canvasObjects);
 
@@ -86,6 +88,14 @@ export default function Home() {
         handleDelete(fabricRef.current as any, deleteShapeFromStorage);
         setActiveElement(defaultNavElement);
         break;
+      case "image":
+        imageInputRef.current?.click();
+        isDrawing.current = false;
+
+        if (fabricRef.current) {
+          fabricRef.current.isDrawingMode = false;
+        }
+        break;
       default:
         break;
     }
@@ -136,7 +146,7 @@ export default function Home() {
     });
 
     window.addEventListener("resize", () => {
-      handleResize({ fabricRef });
+      handleResize({ canvas: fabricRef.current as fabric.Canvas | any });
     });
 
     window.addEventListener("keydown", (e: any) => {
@@ -168,6 +178,17 @@ export default function Home() {
       <Navbar
         activeElement={activeElement}
         handleActiveElement={handleActiveElement}
+        imageInputRef={imageInputRef}
+        handleImageUpload={(e: any) => {
+          e.stopPropagation();
+
+          handleImageUpload({
+            file: e.target.files[0],
+            canvas: fabricRef as fabric.Canvas | any,
+            shapeRef,
+            syncShapeInStorage,
+          });
+        }}
       />
 
       <section className="flex h-full flex-row">
