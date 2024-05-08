@@ -48,6 +48,7 @@ const CursorChat = ({
               "absolute left-2 top-5 px-4 py-4",
               "bg-blue-500 text-sm leading-relaxed text-white rounded-[20px]"
             )}
+            onKeyUp={(e) => e.stopPropagation()} // Prevents the event from bubbling up the DOM tree
           >
             {cursorState.previousMessage && (
               <div>{cursorState.previousMessage}</div>
