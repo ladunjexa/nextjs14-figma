@@ -3,7 +3,7 @@ import { twMerge } from "tailwind-merge";
 import { type ClassValue, clsx } from "clsx";
 import { COLORS } from "@/app/api/liveblocks/auth";
 
-const adjectives = [
+const adjectives: string[] = [
   "Happy",
   "Creative",
   "Energetic",
@@ -19,7 +19,7 @@ const adjectives = [
   "Shining",
 ];
 
-const animals = [
+const animals: string[] = [
   "Dolphin",
   "Tiger",
   "Elephant",

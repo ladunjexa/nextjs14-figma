@@ -163,6 +163,7 @@ export default function Home() {
     return () => {
       canvas.dispose();
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {

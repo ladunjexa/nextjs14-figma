@@ -1,6 +1,28 @@
 export const COLORS = ["#DC2626", "#D97706", "#059669", "#7C3AED", "#DB2777"];
 
-export const shapeElements = [
+type TElement =
+  | {
+      icon: string;
+      name: string;
+      value: string | TElement[];
+    }
+  | {
+      icon: string;
+      label: string;
+      value: string;
+    }
+  | {
+      label: string;
+      value: string;
+    };
+
+type TShortcut = {
+  key: string;
+  name: string;
+  shortcut: string;
+};
+
+export const shapeElements: TElement[] = [
   {
     icon: "/assets/rectangle.svg",
     name: "Rectangle",
@@ -33,7 +55,7 @@ export const shapeElements = [
   },
 ];
 
-export const navElements = [
+export const navElements: TElement[] = [
   {
     icon: "/assets/select.svg",
     name: "Select",
@@ -66,25 +88,25 @@ export const navElements = [
   },
 ];
 
-export const defaultNavElement = {
+export const defaultNavElement: TElement = {
   icon: "/assets/select.svg",
   name: "Select",
   value: "select",
 };
 
-export const directionOptions = [
+export const directionOptions: TElement[] = [
   { label: "Bring to Front", value: "front", icon: "/assets/front.svg" },
   { label: "Send to Back", value: "back", icon: "/assets/back.svg" },
 ];
 
-export const fontFamilyOptions = [
+export const fontFamilyOptions: TElement[] = [
   { value: "Helvetica", label: "Helvetica" },
   { value: "Times New Roman", label: "Times New Roman" },
   { value: "Comic Sans MS", label: "Comic Sans MS" },
   { value: "Brush Script MT", label: "Brush Script MT" },
 ];
 
-export const fontSizeOptions = [
+export const fontSizeOptions: TElement[] = [
   {
     value: "10",
     label: "10",
@@ -143,7 +165,7 @@ export const fontSizeOptions = [
   },
 ];
 
-export const fontWeightOptions = [
+export const fontWeightOptions: TElement[] = [
   {
     value: "400",
     label: "Normal",
@@ -158,7 +180,7 @@ export const fontWeightOptions = [
   },
 ];
 
-export const alignmentOptions = [
+export const alignmentOptions: TElement[] = [
   { value: "left", label: "Align Left", icon: "/assets/align-left.svg" },
   {
     value: "horizontalCenter",
@@ -175,7 +197,7 @@ export const alignmentOptions = [
   { value: "bottom", label: "Align Bottom", icon: "/assets/align-bottom.svg" },
 ];
 
-export const shortcuts = [
+export const shortcuts: TShortcut[] = [
   {
     key: "1",
     name: "Chat",

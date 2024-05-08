@@ -49,6 +49,7 @@ const LeftSidebar = ({ allShapes }: Props) => {
         </div>
       </section>
     );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [allShapes?.length]);
 
   return memoizedShapes;

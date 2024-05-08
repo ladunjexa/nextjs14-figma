@@ -6,7 +6,7 @@ import {
   ElementDirection,
   ImageUpload,
   ModifyShape,
-} from "@/public/assets/types/type";
+} from "@/types/type";
 
 export const createRectangle = (pointer: PointerEvent) => {
   const rect = new fabric.Rect({

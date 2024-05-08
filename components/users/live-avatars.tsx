@@ -120,6 +120,7 @@ export default function LiveAvatars() {
         </AnimatePresence>
       </div>
     );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [others.length]);
 
   return memoizedAvatars;
