@@ -104,7 +104,17 @@ export const getShapeInfo = (shapeType: string) => {
   }
 };
 
-export const exportToPdf = () => {
+export const DEFAULT_PDF_FILE_NAME = "canvas.pdf";
+export const PDF_SUFFIX = ".pdf";
+export const PDF_SUFFIX_LENGTH = PDF_SUFFIX.length;
+
+export const isValidPDFFileName = (fileName: string): boolean => {
+  if (fileName.length < PDF_SUFFIX_LENGTH) return false;
+
+  return fileName.slice(-PDF_SUFFIX_LENGTH) === PDF_SUFFIX;
+};
+
+export const exportToPdf = (fileName: string = DEFAULT_PDF_FILE_NAME) => {
   const canvas = document.querySelector("canvas");
 
   if (!canvas) return;
@@ -123,5 +133,5 @@ export const exportToPdf = () => {
   doc.addImage(data, "PNG", 0, 0, canvas.width, canvas.height);
 
   // download the pdf
-  doc.save("canvas.pdf");
+  doc.save(fileName);
 };
