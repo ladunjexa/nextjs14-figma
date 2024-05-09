@@ -2,21 +2,18 @@ import { ActiveElement } from "@/types";
 
 export const COLORS = ["#DC2626", "#D97706", "#059669", "#7C3AED", "#DB2777"];
 
-type TElement =
-  | {
-      icon: string;
-      name: string;
-      value: string | TElement[];
-    }
-  | {
-      icon: string;
-      label: string;
-      value: string;
-    }
-  | {
-      label: string;
-      value: string;
-    };
+type TElement = {
+  name: string;
+  icon: string;
+  value: string;
+  label: string;
+};
+
+type TBaseElement = Pick<TElement, "value" | "label">;
+type TOptionElement = TBaseElement & { icon: string };
+type TNavElement = Omit<TElement, "label" | "value"> & {
+  value: string | ActiveElement[];
+};
 
 type TShortcut = {
   key: string;
@@ -24,7 +21,7 @@ type TShortcut = {
   shortcut: string;
 };
 
-export const shapeElements: TElement[] = [
+export const shapeElements: ActiveElement[] = [
   {
     icon: "/assets/rectangle.svg",
     name: "Rectangle",
@@ -57,7 +54,7 @@ export const shapeElements: TElement[] = [
   },
 ];
 
-export const navElements: TElement[] = [
+export const navElements: TNavElement[] = [
   {
     icon: "/assets/select.svg",
     name: "Select",
@@ -96,19 +93,19 @@ export const defaultNavElement: ActiveElement = {
   value: "select",
 };
 
-export const directionOptions: TElement[] = [
+export const directionOptions: TOptionElement[] = [
   { label: "Bring to Front", value: "front", icon: "/assets/front.svg" },
   { label: "Send to Back", value: "back", icon: "/assets/back.svg" },
 ];
 
-export const fontFamilyOptions: TElement[] = [
+export const fontFamilyOptions: TBaseElement[] = [
   { value: "Helvetica", label: "Helvetica" },
   { value: "Times New Roman", label: "Times New Roman" },
   { value: "Comic Sans MS", label: "Comic Sans MS" },
   { value: "Brush Script MT", label: "Brush Script MT" },
 ];
 
-export const fontSizeOptions: TElement[] = [
+export const fontSizeOptions: TBaseElement[] = [
   {
     value: "10",
     label: "10",
@@ -167,7 +164,7 @@ export const fontSizeOptions: TElement[] = [
   },
 ];
 
-export const fontWeightOptions: TElement[] = [
+export const fontWeightOptions: TBaseElement[] = [
   {
     value: "400",
     label: "Normal",
@@ -182,7 +179,7 @@ export const fontWeightOptions: TElement[] = [
   },
 ];
 
-export const alignmentOptions: TElement[] = [
+export const alignmentOptions: TOptionElement[] = [
   { value: "left", label: "Align Left", icon: "/assets/align-left.svg" },
   {
     value: "horizontalCenter",

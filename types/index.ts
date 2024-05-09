@@ -1,3 +1,4 @@
+import { Presence } from "@/liveblocks.config";
 import { BaseUserMeta, User } from "@liveblocks/client";
 import { Gradient, Pattern } from "fabric/fabric-impl";
 
@@ -118,12 +119,12 @@ export type ShapesMenuProps = {
   imageInputRef: any;
 };
 
-export type Presence = any;
+// export type Presence = any;
 
 export type CursorProps = {
   color: string;
   x: number;
-  y: string;
+  y: number;
   message: string;
 };
 

@@ -13,7 +13,7 @@ const LiveCursors = ({ others }: LiveCursorProps) => {
         color={COLORS[Number(connectionId) % COLORS.length]}
         x={presence.cursor.x}
         y={presence.cursor.y}
-        message={presence.message}
+        message={presence.message || ""}
       />
     );
   });
