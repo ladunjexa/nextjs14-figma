@@ -1,14 +1,14 @@
 "use client";
 
 import { ReactNode } from "react";
-import { RoomProvider } from "../liveblocks.config";
+import { RoomProvider as LiveblockRoomProvider } from "../liveblocks.config";
 import { ClientSideSuspense } from "@liveblocks/react";
 import { LiveMap } from "@liveblocks/client";
 import Loader from "@/components/layout/loader";
 
-export function Room({ children }: { children: ReactNode }) {
+export default function RoomProvider({ children }: { children: ReactNode }) {
   return (
-    <RoomProvider
+    <LiveblockRoomProvider
       id="fabric-canvas"
       initialPresence={{
         cursor: null,
@@ -21,6 +21,6 @@ export function Room({ children }: { children: ReactNode }) {
       }}
     >
       <ClientSideSuspense fallback={<Loader />}>{() => children}</ClientSideSuspense>
-    </RoomProvider>
+    </LiveblockRoomProvider>
   );
 }
