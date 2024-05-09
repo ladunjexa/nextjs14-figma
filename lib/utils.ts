@@ -1,4 +1,4 @@
-import jsPDF from "jspdf";
+import JsPDF from "jspdf";
 import { twMerge } from "tailwind-merge";
 import { type ClassValue, clsx } from "clsx";
 import { COLORS } from "@/app/api/liveblocks/auth";
@@ -40,8 +40,7 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 export function generateRandomName(): string {
-  const randomAdjective =
-    adjectives[Math.floor(Math.random() * adjectives.length)];
+  const randomAdjective = adjectives[Math.floor(Math.random() * adjectives.length)];
   const randomAnimal = animals[Math.floor(Math.random() * animals.length)];
 
   return `${randomAdjective} ${randomAnimal}`;
@@ -120,7 +119,7 @@ export const exportToPdf = (fileName: string = DEFAULT_PDF_FILE_NAME) => {
   if (!canvas) return;
 
   // use jspdf
-  const doc = new jsPDF({
+  const doc = new JsPDF({
     orientation: "landscape",
     unit: "px",
     format: [canvas.width, canvas.height],
