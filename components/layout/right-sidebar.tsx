@@ -22,7 +22,7 @@ const RightSidebar = ({
   const handleInputChange = (property: string, value: string) => {
     if (!isEditingRef.current) isEditingRef.current = true;
 
-    setElementAttributes((prev) => ({
+    setElementAttributes(prev => ({
       ...prev,
       [property]: value,
     }));
@@ -39,11 +39,11 @@ const RightSidebar = ({
   return (
     <section
       className={clsx(
-        "flex flex-col border-t border-primary-grey-200 bg-primary-black text-primary-grey-300 min-w-[227px] sticky right-0 h-full max-sm:hidden select-none overflow-y-auto pb-20"
+        "sticky right-0 flex h-full min-w-[227px] select-none flex-col overflow-y-auto border-t border-primary-grey-200 bg-primary-black pb-20 text-primary-grey-300 max-sm:hidden"
       )}
     >
       <h3 className="px-5 pt-4 text-xs uppercase">Design</h3>
-      <span className="text-xs text-primary-grey-300 mt-3 px-5 border-b border-primary-grey-200 pb-4">
+      <span className="mt-3 border-b border-primary-grey-200 px-5 pb-4 text-xs text-primary-grey-300">
         Make changes to canvas as you like
       </span>
 

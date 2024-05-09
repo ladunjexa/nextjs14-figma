@@ -3,14 +3,7 @@ import { CursorChatProps, CursorMode } from "@/types";
 import clsx from "clsx";
 import React from "react";
 
-type Props = {};
-
-const CursorChat = ({
-  cursor,
-  cursorState,
-  setCursorState,
-  updateMyPresence,
-}: CursorChatProps) => {
+const CursorChat = ({ cursor, cursorState, setCursorState, updateMyPresence }: CursorChatProps) => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     updateMyPresence({ message: e.target.value });
     setCursorState({
@@ -35,7 +28,7 @@ const CursorChat = ({
 
   return (
     <div
-      className={clsx("absolute top-0 left-0")}
+      className={clsx("absolute left-0 top-0")}
       style={{
         transform: `translateX(${cursor.x}px) translateY(${cursor.y}px)`,
       }}
@@ -46,24 +39,20 @@ const CursorChat = ({
 
           <div
             className={clsx(
-              "absolute left-2 top-5 px-4 py-4",
-              "bg-blue-500 text-sm leading-relaxed text-white rounded-[20px]"
+              "absolute left-2 top-5 p-4",
+              "rounded-[20px] bg-blue-500 text-sm leading-relaxed text-white"
             )}
-            onKeyUp={(e) => e.stopPropagation()} // Prevents the event from bubbling up the DOM tree
+            onKeyUp={e => e.stopPropagation()} // Prevents the event from bubbling up the DOM tree
           >
-            {cursorState.previousMessage && (
-              <div>{cursorState.previousMessage}</div>
-            )}
+            {cursorState.previousMessage && <div>{cursorState.previousMessage}</div>}
             <input
               className={clsx(
-                "z-10 w-60 border-none bg-transparent text-white placeholder-blue-300 outline-none"
+                "z-10 w-60 border-none bg-transparent text-white outline-none placeholder:text-blue-300"
               )}
               autoFocus={true}
               onChange={handleChange}
               onKeyDown={handleKeyDown}
-              placeholder={
-                cursorState.previousMessage ? "" : "Type a message..."
-              }
+              placeholder={cursorState.previousMessage ? "" : "Type a message..."}
               value={cursorState.message}
               maxLength={50}
             />

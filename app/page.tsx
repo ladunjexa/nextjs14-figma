@@ -20,7 +20,6 @@ import {
 } from "@/lib/canvas";
 import { ActiveElement, Attributes } from "@/types";
 import { useMutation, useRedo, useStorage, useUndo } from "@/liveblocks.config";
-import { LiveMap } from "@liveblocks/client";
 import { defaultNavElement } from "@/constants";
 import { handleDelete, handleKeyDown } from "@/lib/key-events";
 import { handleImageUpload } from "@/lib/shapes";
@@ -38,7 +37,7 @@ export default function Home() {
   const imageInputRef = useRef<HTMLInputElement | null>(null);
   const isEditingRef = useRef<boolean>(false);
 
-  const canvasObjects = useStorage((root) => root.canvasObjects);
+  const canvasObjects = useStorage(root => root.canvasObjects);
 
   const [elementAttributes, setElementAttributes] = useState<Attributes>({
     width: "",
@@ -76,7 +75,7 @@ export default function Home() {
 
     const entries = Array.from(canvasObjects.entries());
 
-    for (const [key, value] of entries) {
+    for (const [key] of entries) {
       canvasObjects.delete(key);
     }
 

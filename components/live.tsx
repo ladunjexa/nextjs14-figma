@@ -1,12 +1,7 @@
 "use client";
 
 import React, { useCallback, useEffect, useState } from "react";
-import {
-  useBroadcastEvent,
-  useEventListener,
-  useMyPresence,
-  useOthers,
-} from "@/liveblocks.config";
+import { useBroadcastEvent, useEventListener, useMyPresence, useOthers } from "@/liveblocks.config";
 import LiveCursors from "./cursor/live-cursors";
 import clsx from "clsx";
 import CursorChat from "./cursor/cursor-chat";
@@ -44,18 +39,12 @@ const Live = ({ canvasRef, undo, redo }: Props) => {
   const broadcast = useBroadcastEvent();
 
   useInterval(() => {
-    setReaction((reaction) =>
-      reaction.filter((r) => r.timestamp > Date.now() - REACTION_DURATION)
-    );
+    setReaction(reaction => reaction.filter(r => r.timestamp > Date.now() - REACTION_DURATION));
   }, 1000);
 
   useInterval(() => {
-    if (
-      cursorState.mode === CursorMode.Reaction &&
-      cursorState.isPressed &&
-      cursor
-    ) {
-      setReaction((reactions) =>
+    if (cursorState.mode === CursorMode.Reaction && cursorState.isPressed && cursor) {
+      setReaction(reactions =>
         reactions.concat([
           {
             point: { x: cursor.x, y: cursor.y },
@@ -73,10 +62,10 @@ const Live = ({ canvasRef, undo, redo }: Props) => {
     }
   }, 100);
 
-  useEventListener((eventData) => {
+  useEventListener(eventData => {
     const event = eventData.event as ReactionEvent;
 
-    setReaction((reactions) =>
+    setReaction(reactions =>
       reactions.concat([
         {
           point: { x: event.x, y: event.y },
@@ -113,9 +102,7 @@ const Live = ({ canvasRef, undo, redo }: Props) => {
       updateMyPresence({ cursor: { x, y } });
 
       setCursorState((state: CursorState) =>
-        state.mode === CursorMode.Reaction
-          ? { ...state, isPressed: true }
-          : state
+        state.mode === CursorMode.Reaction ? { ...state, isPressed: true } : state
       );
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -125,9 +112,7 @@ const Live = ({ canvasRef, undo, redo }: Props) => {
   const handlePointerUp = useCallback(
     (e: React.PointerEvent) => {
       setCursorState((state: CursorState) =>
-        state.mode === CursorMode.Reaction
-          ? { ...state, isPressed: false }
-          : state
+        state.mode === CursorMode.Reaction ? { ...state, isPressed: false } : state
       );
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -205,13 +190,11 @@ const Live = ({ canvasRef, undo, redo }: Props) => {
         onPointerLeave={handlePointerLeave}
         onPointerDown={handlePointerDown}
         onPointerUp={handlePointerUp}
-        className={clsx(
-          "relative h-full w-full flex flex-1 justify-center items-center"
-        )}
+        className={clsx("relative flex size-full flex-1 items-center justify-center")}
       >
         <canvas ref={canvasRef} />
 
-        {reaction.map((r) => (
+        {reaction.map(r => (
           <FlyingReaction
             key={r.timestamp.toString()}
             x={r.point.x}
@@ -238,7 +221,7 @@ const Live = ({ canvasRef, undo, redo }: Props) => {
         <Comments />
       </ContextMenuTrigger>
       <ContextMenuContent className="right-menu-content">
-        {shortcuts.map((item) => (
+        {shortcuts.map(item => (
           <ContextMenuItem
             key={item.key}
             onClick={() => handleContextMenuClick(item.name)}

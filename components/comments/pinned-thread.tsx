@@ -49,13 +49,11 @@ export const PinnedThread = ({ thread, onFocus, ...props }: Props) => {
         }}
       >
         <div
-          className="relative flex h-9 w-9 select-none items-center justify-center rounded-bl-full rounded-br-full rounded-tl-md rounded-tr-full bg-white shadow"
+          className="relative flex size-9 select-none items-center justify-center rounded-r-full rounded-bl-full rounded-tl-md bg-white shadow"
           data-draggable={true}
         >
           <Image
-            src={`https://liveblocks.io/avatars/avatar-${Math.floor(
-              Math.random() * 30
-            )}.png`}
+            src={`https://liveblocks.io/avatars/avatar-${Math.floor(Math.random() * 30)}.png`}
             alt="Dummy Name"
             width={28}
             height={28}
@@ -68,7 +66,7 @@ export const PinnedThread = ({ thread, onFocus, ...props }: Props) => {
             <Thread
               thread={thread}
               indentCommentContent={false}
-              onKeyUp={(e) => {
+              onKeyUp={e => {
                 e.stopPropagation();
               }}
             />

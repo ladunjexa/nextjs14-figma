@@ -20,8 +20,7 @@ const Navbar = ({
 }: NavbarProps) => {
   const isActive = (value: string | Array<ActiveElement>) =>
     (activeElement && activeElement.value === value) ||
-    (Array.isArray(value) &&
-      value.some((val) => val?.value === activeElement?.value));
+    (Array.isArray(value) && value.some(val => val?.value === activeElement?.value));
 
   return (
     <nav className="flex select-none items-center justify-between gap-4 bg-primary-black px-5 text-white">
@@ -35,12 +34,8 @@ const Navbar = ({
               if (Array.isArray(item.value)) return;
               handleActiveElement(item);
             }}
-            className={`group px-2.5 py-5 flex justify-center items-center
-            ${
-              isActive(item.value)
-                ? "bg-primary-green"
-                : "hover:bg-primary-grey-200"
-            }
+            className={`group flex items-center justify-center px-2.5 py-5
+            ${isActive(item.value) ? "bg-primary-green" : "hover:bg-primary-grey-200"}
             `}
           >
             {/* !If value is an array means it's a nav element with sub options i.e., dropdown */}
@@ -56,7 +51,7 @@ const Navbar = ({
               <>
                 {/* !If value is comments, trigger the NewThread component */}
                 <NewThread>
-                  <Button className="relative w-5 h-5 object-contain">
+                  <Button className="relative size-5 object-contain">
                     <Image
                       src={item.icon}
                       alt={item.name}
@@ -67,7 +62,7 @@ const Navbar = ({
                 </NewThread>
               </>
             ) : (
-              <Button className="relative w-5 h-5 object-contain">
+              <Button className="relative size-5 object-contain">
                 <Image
                   src={item.icon}
                   alt={item.name}

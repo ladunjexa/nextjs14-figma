@@ -1,10 +1,11 @@
+import React from "react";
 import type { Metadata } from "next";
-import { Work_Sans } from "next/font/google";
+import { Work_Sans as WorkSans } from "next/font/google";
 
 import "./globals.css";
 import { Room } from "./Room";
 
-const workSans = Work_Sans({
+const workSans = WorkSans({
   subsets: ["latin"],
   variable: "--font-work-sans",
   weight: ["400", "600", "700"],

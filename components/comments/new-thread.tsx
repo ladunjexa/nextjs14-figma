@@ -1,13 +1,6 @@
 "use client";
 
-import {
-  FormEvent,
-  ReactNode,
-  useCallback,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
+import { FormEvent, ReactNode, useCallback, useEffect, useRef, useState } from "react";
 import { Slot } from "@radix-ui/react-slot";
 import * as Portal from "@radix-ui/react-portal";
 import { ComposerSubmitComment } from "@liveblocks/react-comments/primitives";
@@ -108,10 +101,7 @@ export const NewThread = ({ children }: Props) => {
     document.documentElement.addEventListener("pointermove", handlePointerMove);
 
     return () => {
-      document.documentElement.removeEventListener(
-        "pointermove",
-        handlePointerMove
-      );
+      document.documentElement.removeEventListener("pointermove", handlePointerMove);
     };
   }, []);
 
@@ -145,14 +135,8 @@ export const NewThread = ({ children }: Props) => {
     document.documentElement.addEventListener("contextmenu", handleContextMenu);
 
     return () => {
-      document.documentElement.removeEventListener(
-        "pointerdown",
-        handlePointerDown
-      );
-      document.documentElement.removeEventListener(
-        "contextmenu",
-        handleContextMenu
-      );
+      document.documentElement.removeEventListener("pointerdown", handlePointerDown);
+      document.documentElement.removeEventListener("contextmenu", handleContextMenu);
     };
   }, [creatingCommentState]);
 
@@ -206,9 +190,7 @@ export const NewThread = ({ children }: Props) => {
        */}
       <Slot
         onClick={() =>
-          setCreatingCommentState(
-            creatingCommentState !== "complete" ? "complete" : "placing"
-          )
+          setCreatingCommentState(creatingCommentState !== "complete" ? "complete" : "placing")
         }
         style={{ opacity: creatingCommentState !== "complete" ? 0.7 : 1 }}
       >

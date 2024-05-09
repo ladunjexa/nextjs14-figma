@@ -20,9 +20,7 @@ export function Room({ children }: { children: ReactNode }) {
         canvasObjects: new LiveMap(),
       }}
     >
-      <ClientSideSuspense fallback={<Loader />}>
-        {() => children}
-      </ClientSideSuspense>
+      <ClientSideSuspense fallback={<Loader />}>{() => children}</ClientSideSuspense>
     </RoomProvider>
   );
 }

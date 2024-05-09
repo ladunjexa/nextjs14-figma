@@ -1,3 +1,4 @@
+import React from "react";
 import { fabric } from "fabric";
 import { v4 as uuid4 } from "uuid";
 
@@ -148,7 +149,7 @@ export const handleCanvaseMouseMove = ({
         width: pointer.x - (shapeRef.current?.left || 0),
         height: pointer.y - (shapeRef.current?.top || 0),
       });
-
+      break;
     default:
       break;
   }
@@ -200,7 +201,7 @@ export const handleCanvasObjectModified = ({
   const target = options.target;
   if (!target) return;
 
-  if (target?.type == "activeSelection") {
+  if (target?.type === "activeSelection") {
     // fix this
   } else {
     syncShapeInStorage(target);
@@ -352,6 +353,8 @@ export const renderCanvas = ({ fabricRef, canvasObjects, activeObjectRef }: Rend
        */
       "fabric"
     );
+
+    return null;
   });
 
   fabricRef.current?.renderAll();

@@ -3,10 +3,8 @@ import { CopyIcon, DownloadIcon } from "@radix-ui/react-icons";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
-  DialogClose,
   DialogContent,
   DialogDescription,
-  DialogFooter,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
@@ -44,12 +42,10 @@ const Export = () => {
             Export to PDF
           </Button>
         </DialogTrigger>
-        <DialogContent className="border-primary-grey-200 bg-primary-black text-primary-grey-300 sm:max-w-md border">
+        <DialogContent className="border border-primary-grey-200 bg-primary-black text-primary-grey-300 sm:max-w-md">
           <DialogHeader>
-            <DialogTitle className="uppercase text-sm">
-              Export to PDF
-            </DialogTitle>
-            <DialogDescription className="uppercase text-xs">
+            <DialogTitle className="text-sm uppercase">Export to PDF</DialogTitle>
+            <DialogDescription className="text-xs uppercase">
               Name your figpro file and export it to your device
             </DialogDescription>
           </DialogHeader>
@@ -60,30 +56,30 @@ const Export = () => {
               </Label>
               <Input
                 id="link"
-                className="text-sm bg-primary-grey-300 text-primary-grey-100"
+                className="bg-primary-grey-300 text-sm text-primary-grey-100"
                 value={fileName || ""}
-                onChange={(e) => setFileName(e.target.value)}
+                onChange={e => setFileName(e.target.value)}
               />
             </div>
             <Button
               type="submit"
               size="sm"
-              className="px-3 border border-primary-grey-100 hover:bg-primary-green hover:text-primary-black"
+              className="border border-primary-grey-100 px-3 hover:bg-primary-green hover:text-primary-black"
               onClick={onCopy}
               disabled={!fileName}
             >
               <span className="sr-only">Copy</span>
-              <CopyIcon className="h-4 w-4" />
+              <CopyIcon className="size-4" />
             </Button>
             <Button
               type="submit"
               size="sm"
-              className="px-3 border border-primary-grey-100 hover:bg-primary-green hover:text-primary-black"
+              className="border border-primary-grey-100 px-3 hover:bg-primary-green hover:text-primary-black"
               onClick={onDownload}
               disabled={!isValidPDFFileName(fileName || "")}
             >
               <span className="sr-only">Copy</span>
-              <DownloadIcon className="h-4 w-4" />
+              <DownloadIcon className="size-4" />
             </Button>
           </div>
         </DialogContent>

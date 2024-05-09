@@ -68,17 +68,10 @@ export function Avatar({
       className={clsx(styles.avatar, className)}
       data-tooltip={name}
     >
-      {innerVariant === "more" ? (
-        <MoreCircle count={count} borderRadius={borderRadius} />
-      ) : null}
+      {innerVariant === "more" ? <MoreCircle count={count} borderRadius={borderRadius} /> : null}
 
       {innerVariant === "avatar" ? (
-        <PictureCircle
-          name={name}
-          src={src}
-          size={realSize}
-          borderRadius={borderRadius}
-        />
+        <PictureCircle name={name} src={src} size={realSize} borderRadius={borderRadius} />
       ) : null}
 
       {innerVariant === "letter" ? (
@@ -86,10 +79,7 @@ export function Avatar({
       ) : null}
 
       {statusColor ? (
-        <span
-          style={{ backgroundColor: statusColor }}
-          className={styles.status}
-        />
+        <span style={{ backgroundColor: statusColor }} className={styles.status} />
       ) : null}
     </div>
   );
@@ -100,10 +90,7 @@ function LetterCircle({
   color,
   borderRadius,
 }: Pick<PictureProps, "name" | "color" | "borderRadius">) {
-  const textColor = useMemo(
-    () => (color ? getContrastingColor(color[1]) : undefined),
-    [color]
-  );
+  const textColor = useMemo(() => (color ? getContrastingColor(color[1]) : undefined), [color]);
   return (
     <div
       style={{
@@ -125,21 +112,10 @@ function PictureCircle({
   size,
   borderRadius,
 }: Pick<PictureProps, "name" | "src" | "size" | "borderRadius">) {
-  return (
-    <Image
-      alt={name ?? ""}
-      src={src}
-      height={size}
-      width={size}
-      style={{ borderRadius }}
-    />
-  );
+  return <Image alt={name ?? ""} src={src} height={size} width={size} style={{ borderRadius }} />;
 }
 
-function MoreCircle({
-  count,
-  borderRadius,
-}: Pick<MoreProps, "count" | "borderRadius">) {
+function MoreCircle({ count, borderRadius }: Pick<MoreProps, "count" | "borderRadius">) {
   return (
     <div style={{ borderRadius }} className={styles.more}>
       +{count}

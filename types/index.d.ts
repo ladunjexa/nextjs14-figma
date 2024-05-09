@@ -1,3 +1,6 @@
+/* eslint-disable no-unused-vars */
+import React from "react";
+import { fabric } from "fabric";
 import { Presence } from "@/liveblocks.config";
 import { BaseUserMeta, User } from "@liveblocks/client";
 import { Gradient, Pattern } from "fabric/fabric-impl";
@@ -65,8 +68,7 @@ export type ActiveElement = {
   icon: string;
 } | null;
 
-export interface CustomFabricObject<T extends fabric.Object>
-  extends fabric.Object {
+export interface CustomFabricObject<T extends fabric.Object> extends fabric.Object {
   objectId?: string;
 }
 

@@ -36,9 +36,7 @@ const avatarProps = {
 };
 
 function containsColor(colors: [string, string][], color: [string, string]) {
-  return colors?.some(
-    ([color1, color2]) => color1 === color[0] || color2 === color[1]
-  );
+  return colors?.some(([color1, color2]) => color1 === color[0] || color2 === color[1]);
 }
 
 export default function LiveAvatars() {
@@ -51,7 +49,7 @@ export default function LiveAvatars() {
   // avatars would get needlessly re-rendered any time any of the others moved
   // their cursors :)
   //
-  const others = useOthersMapped((other) => other.info);
+  const others = useOthersMapped(other => other.info);
   const currentUser = useSelf();
   const hasMoreUsers = others.length > MAX_OTHERS;
 
@@ -81,11 +79,7 @@ export default function LiveAvatars() {
         <AnimatePresence>
           {hasMoreUsers ? (
             <motion.div key="count" {...animationProps}>
-              <Avatar
-                {...avatarProps}
-                variant="more"
-                count={others.length - 3}
-              />
+              <Avatar {...avatarProps} variant="more" count={others.length - 3} />
             </motion.div>
           ) : null}
 
@@ -96,9 +90,7 @@ export default function LiveAvatars() {
               <motion.div key={key} {...animationProps}>
                 <Avatar
                   {...avatarProps}
-                  src={`https://liveblocks.io/avatars/avatar-${Math.floor(
-                    Math.random() * 3
-                  )}.png`}
+                  src={`https://liveblocks.io/avatars/avatar-${Math.floor(Math.random() * 3)}.png`}
                   name={generateRandomName()}
                   color={othersGradient[_i]}
                 />
@@ -109,9 +101,7 @@ export default function LiveAvatars() {
             <motion.div key="you" {...animationProps}>
               <Avatar
                 {...avatarProps}
-                src={`https://liveblocks.io/avatars/avatar-${Math.floor(
-                  Math.random() * 3
-                )}.png`}
+                src={`https://liveblocks.io/avatars/avatar-${Math.floor(Math.random() * 3)}.png`}
                 name={`${generateRandomName()} (you)`}
                 color={selfGradient}
               />

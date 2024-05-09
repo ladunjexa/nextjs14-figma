@@ -33,13 +33,9 @@ export const CommentsOverlay = () => {
   return (
     <div>
       {threads
-        .filter((thread) => !thread.metadata.resolved)
-        .map((thread) => (
-          <OverlayThread
-            key={thread.id}
-            thread={thread}
-            maxZIndex={maxZIndex}
-          />
+        .filter(thread => !thread.metadata.resolved)
+        .map(thread => (
+          <OverlayThread key={thread.id} thread={thread} maxZIndex={maxZIndex} />
         ))}
     </div>
   );
