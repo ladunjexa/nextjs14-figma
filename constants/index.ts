@@ -1,3 +1,5 @@
+import { ActiveElement } from "@/types/type";
+
 export const COLORS = ["#DC2626", "#D97706", "#059669", "#7C3AED", "#DB2777"];
 
 type TElement =
@@ -88,7 +90,7 @@ export const navElements: TElement[] = [
   },
 ];
 
-export const defaultNavElement: TElement = {
+export const defaultNavElement: ActiveElement = {
   icon: "/assets/select.svg",
   name: "Select",
   value: "select",

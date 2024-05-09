@@ -1,4 +1,4 @@
-import { Label } from "../ui/label";
+import { Label } from "@/components/ui/label";
 
 type Props = {
   inputRef: any;
@@ -28,9 +28,9 @@ const Color = ({
         onChange={(e) => handleInputChange(attributeType, e.target.value)}
       />
       <Label className="flex-1">{attribute}</Label>
-      <Label className="flex h-6 w-8 items-center justify-center bg-primary-grey-100 text-[10px] leading-3">
+      {/* <Label className="flex h-6 w-8 items-center justify-center bg-primary-grey-100 text-[10px] leading-3">
         90%
-      </Label>
+      </Label> */}
     </div>
   </div>
 );
