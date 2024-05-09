@@ -1,7 +1,7 @@
 import { fabric } from "fabric";
 import { v4 as uuidv4 } from "uuid";
 
-import { CustomFabricObject, ElementDirection, ImageUpload, ModifyShape } from "@/types";
+import type { CustomFabricObject, ElementDirection, ImageUpload, ModifyShape } from "@/types";
 
 export const createRectangle = (pointer: PointerEvent) => {
   const rect = new fabric.Rect({

@@ -4,7 +4,7 @@ import Dimensions from "../settings/dimension";
 import Text from "../settings/text";
 import Color from "../settings/color";
 import Export from "../settings/export";
-import { RightSidebarProps } from "@/types";
+import { type RightSidebarProps } from "@/types";
 import { modifyShape } from "@/lib/shapes";
 import { fabric } from "fabric";
 

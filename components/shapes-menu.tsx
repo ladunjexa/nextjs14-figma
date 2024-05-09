@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 
-import { ShapesMenuProps } from "@/types";
+import { type ShapesMenuProps } from "@/types";
 
 import { DropdownMenu, DropdownMenuContent, DropdownMenuTrigger } from "./ui/dropdown-menu";
 import { Button } from "./ui/button";
