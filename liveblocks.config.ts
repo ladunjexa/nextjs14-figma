@@ -3,6 +3,7 @@ import { createRoomContext, createLiveblocksContext } from "@liveblocks/react";
 
 const client = createClient({
   publicApiKey: process.env.NEXT_PUBLIC_LIVEBLOCKS_PUBLIC_KEY!,
+  throttle: 16,
   // authEndpoint: "/api/liveblocks/auth",
   // throttle: 100,
   async resolveUsers({ userIds }) {
@@ -85,6 +86,11 @@ export type ThreadMetadata = {
   // resolved: boolean;
   // quote: string;
   // time: number;
+  resolved: boolean;
+  zIndex: number;
+  time?: number;
+  x: number;
+  y: number;
 };
 
 // Room-level hooks, use inside `RoomProvider`

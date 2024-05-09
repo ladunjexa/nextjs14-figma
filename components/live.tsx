@@ -14,6 +14,7 @@ import { CursorMode, CursorState, Reaction, ReactionEvent } from "@/types/type";
 import ReactionSelector from "./reaction/reaction-selector";
 import FlyingReaction from "./reaction/flying-reaction";
 import useInterval from "@/hooks/use-interval";
+import { Comments } from "./comments/comments";
 
 const REACTION_DURATION = 5000;
 
@@ -171,8 +172,7 @@ const Live = ({ canvasRef }: Props) => {
       onPointerDown={handlePointerDown}
       onPointerUp={handlePointerUp}
       className={clsx(
-        "h-[100vh] w-full flex justify-center items-center",
-        "text-center"
+        "relative h-full w-full flex flex-1 justify-center items-center"
       )}
     >
       {/* <h1 className={clsx("text-2xl text-white")}>Liveblocks Figma</h1> */}
@@ -202,6 +202,8 @@ const Live = ({ canvasRef }: Props) => {
       )}
 
       <LiveCursors others={others} />
+
+      <Comments />
     </div>
   );
 };
