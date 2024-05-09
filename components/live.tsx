@@ -10,7 +10,7 @@ import {
 import LiveCursors from "./cursor/live-cursors";
 import clsx from "clsx";
 import CursorChat from "./cursor/cursor-chat";
-import { CursorMode, CursorState, Reaction, ReactionEvent } from "@/types/type";
+import { CursorMode, CursorState, Reaction, ReactionEvent } from "@/types";
 import ReactionSelector from "./reaction/reaction-selector";
 import FlyingReaction from "./reaction/flying-reaction";
 import useInterval from "@/hooks/use-interval";

@@ -9,7 +9,7 @@ import {
   useThreads,
   // useUser,
 } from "@/liveblocks.config";
-import { useMaxZIndex } from "@/lib/use-max-z-index";
+import { useMaxZIndex } from "@/hooks/use-max-z-index";
 
 import { PinnedThread } from "./pinned-thread";
 

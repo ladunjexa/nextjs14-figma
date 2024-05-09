@@ -1,5 +1,5 @@
 import CursorSVG from "@/public/assets/CursorSVG";
-import { CursorChatProps, CursorMode } from "@/types/type";
+import { CursorChatProps, CursorMode } from "@/types";
 import clsx from "clsx";
 import React from "react";
 

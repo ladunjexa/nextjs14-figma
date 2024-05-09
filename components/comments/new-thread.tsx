@@ -13,7 +13,7 @@ import * as Portal from "@radix-ui/react-portal";
 import { ComposerSubmitComment } from "@liveblocks/react-comments/primitives";
 
 import { useCreateThread } from "@/liveblocks.config";
-import { useMaxZIndex } from "@/lib/use-max-z-index";
+import { useMaxZIndex } from "@/hooks/use-max-z-index";
 
 import PinnedComposer from "./pinned-composer";
 import NewThreadCursor from "./new-thread-cursor";

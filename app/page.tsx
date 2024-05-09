@@ -13,11 +13,12 @@ import {
   handleCanvasObjectScaling,
   handleCanvasSelectionCreated,
   handleCanvaseMouseMove,
+  handlePathCreated,
   handleResize,
   initializeFabric,
   renderCanvas,
 } from "@/lib/canvas";
-import { ActiveElement, Attributes } from "@/types/type";
+import { ActiveElement, Attributes } from "@/types";
 import { useMutation, useRedo, useStorage, useUndo } from "@/liveblocks.config";
 import { LiveMap } from "@liveblocks/client";
 import { defaultNavElement } from "@/constants";
@@ -151,6 +152,13 @@ export default function Home() {
       });
     });
 
+    canvas.on("path:created", (options: any) => {
+      handlePathCreated({
+        options,
+        syncShapeInStorage,
+      });
+    });
+
     canvas.on("object:modified", (options: any) => {
       handleCanvasObjectModified({
         options,
@@ -158,17 +166,17 @@ export default function Home() {
       });
     });
 
-    canvas.on("selection:created", (options: any) => {
-      handleCanvasSelectionCreated({
+    canvas.on("object:scaling", (options: any) => {
+      handleCanvasObjectScaling({
         options,
-        isEditingRef,
         setElementAttributes,
       });
     });
 
-    canvas.on("object:scaling", (options: any) => {
-      handleCanvasObjectScaling({
+    canvas.on("selection:created", (options: any) => {
+      handleCanvasSelectionCreated({
         options,
+        isEditingRef,
         setElementAttributes,
       });
     });

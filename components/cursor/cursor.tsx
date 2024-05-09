@@ -1,5 +1,5 @@
 import CursorSVG from "@/public/assets/CursorSVG";
-import { CursorProps } from "@/types/type";
+import { CursorProps } from "@/types";
 import clsx from "clsx";
 import React from "react";
 

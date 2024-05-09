@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 
-import { ShapesMenuProps } from "@/types/type";
+import { ShapesMenuProps } from "@/types";
 
 import {
   DropdownMenu,
